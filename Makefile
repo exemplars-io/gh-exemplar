@@ -1,12 +1,17 @@
+# clean befoe the build
+clean :
 
-build:
-	go build -o _output/bin/exemplars main.go
+	-rm gh-exemplar
+
+build :
+	@echo "build the exemplar extension in current directory"
+	go build -o gh-exemplar main.go
 
 # Build , Remove and Install the extension
-install:
-	echo "building the exemplar extension"
-	go build main.go
+install:	
 
-	gh extension remove exemplar
+	-gh extension remove exemplar
 	
 	gh extension install .
+
+all: clean build install
