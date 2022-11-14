@@ -37,7 +37,9 @@ func init() {
 	// executeCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
 	executeCmd.Flags().StringP("name", "n", "", "Name of the exemplar to execute")
-	executeCmd.MarkFlagRequired("name")
+	executeCmd.Flags().StringP("location", "l", "", "Location of the exemplar to execute")
+
+	executeCmd.MarkFlagsMutuallyExclusive("name", "location")
 
 	//executeCmd.Flags().StringP("location", "l", "", "Location of the exemplar to execute")
 
